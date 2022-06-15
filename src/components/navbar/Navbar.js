@@ -1,9 +1,33 @@
-import { AppBar, IconButton, Toolbar, Typography } from "@mui/material";
+import {
+  AppBar,
+  Badge,
+  Button,
+  IconButton,
+  Toolbar,
+  Typography,
+} from "@mui/material";
+import { useState } from "react";
 import React from "react";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import { Box } from "@mui/system";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
 
 const Navbar = () => {
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  //   for using to toogle the button in order to make the switch from On/Off
+  const openMenu = Boolean(anchorEl);
+
+  const handleClick = (e) => {
+    setAnchorEl(e.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <AppBar elevation={0} sx={{ backgroundColor: "white" }}>
       <Toolbar>
@@ -14,7 +38,8 @@ const Navbar = () => {
             alignItems: "center",
             width: "100%",
           }}
-          component="div"
+          comp
+          onent="div"
         >
           <Box>
             <IconButton>
@@ -28,16 +53,37 @@ const Navbar = () => {
             >
               Home
             </Typography>
+
+            {/* Brand */}
+
             <Typography
               sx={{ marginRight: "20px", cursor: "pointer", color: "red" }}
             >
               Brand
             </Typography>
+
+            {/* Here the functionalities */}
+
             <Typography
               sx={{ marginRight: "20px", cursor: "pointer", color: "red" }}
+              aria-controls="basic-menu"
+              aria-haspopup="true"
+              aria-expanded={openMenu ? "true" : undefined}
+              onClick={handleClick}
             >
               Categories
             </Typography>
+
+            <Menu
+              id="basic-menu"
+              anchorEl={anchorEl}
+              open={openMenu}
+              onClose={handleClose}
+            >
+              <MenuItem onClick={handleClose}>Men</MenuItem>
+              <MenuItem onClick={handleClose}>Women</MenuItem>
+              <MenuItem onClick={handleClose}>Unisex</MenuItem>
+            </Menu>
             <Typography
               sx={{ marginRight: "20px", cursor: "pointer", color: "red" }}
             >
@@ -54,8 +100,25 @@ const Navbar = () => {
               FAQ
             </Typography>
           </Box>
-          <Box>
-            <Typography>Buttons</Typography>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItem: "center",
+            }}
+          >
+            <Button
+              variant="contained"
+              sx={{ backgroundColor: "#F99797" }}
+              disableElevation
+            >
+              Account
+            </Button>
+            <IconButton>
+              <Badge badgeContent={4} color="success">
+                <ShoppingCartIcon color="action" />
+              </Badge>
+            </IconButton>
           </Box>
         </Box>
       </Toolbar>
