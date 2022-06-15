@@ -8,11 +8,11 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import React from "react";
-import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import { Box } from "@mui/system";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import { EmojiEmotions } from "@mui/icons-material";
 
 const Navbar = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -37,13 +37,18 @@ const Navbar = () => {
             justifyContent: "space-between",
             alignItems: "center",
             width: "100%",
+            padding: "10px 0px",
           }}
           comp
           onent="div"
         >
           <Box>
             <IconButton>
-              <MenuOutlinedIcon />
+              <EmojiEmotions
+                sx={{
+                  fontSize: "2.4rem",
+                }}
+              />
             </IconButton>
           </Box>
           {/* The parent of the links was inline-block: Display Flex */}
@@ -63,7 +68,6 @@ const Navbar = () => {
             </Typography>
 
             {/* Here the functionalities */}
-
             <Typography
               sx={{ marginRight: "20px", cursor: "pointer", color: "red" }}
               aria-controls="basic-menu"
