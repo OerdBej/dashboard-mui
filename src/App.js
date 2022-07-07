@@ -1,9 +1,6 @@
+import Navbar from "./components/navbar/Navbar";
 function App() {
-  return (
-    <div>
-      <h2>Hello World from Material UI 💙</h2>
-    </div>
-  );
+  return <Navbar></Navbar>;
 }
 
 export default App;
