@@ -1,5 +1,5 @@
 import React from "react";
-import { AppBar, Box, Toolbar, Typography } from "@mui/material";
+import { AppBar, Box, InputBase, Toolbar, Typography } from "@mui/material";
 import styled from "styled-components";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import { Instagram, LinkedIn } from "@mui/icons-material";
@@ -17,6 +17,11 @@ const Navbar = () => {
   const MenuBox = styled(Box)({
     display: "flex",
     gap: 30,
+  });
+
+  const SearchBox = styled(Box)({
+    display: "flex",
+    gap: 5,
   });
 
   // An object in order to make the map() for each components.
@@ -42,7 +47,14 @@ const Navbar = () => {
             </Typography>
           ))}
         </MenuBox>
-        <Box>Search</Box>
+        <SearchBox>
+          <InputBase
+            placeholder="Search your bike.."
+            sx={{
+              color: "white",
+            }}
+          />
+        </SearchBox>
       </StyledToolbar>
     </AppBar>
   );
