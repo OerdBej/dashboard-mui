@@ -1,8 +1,16 @@
 import React from "react";
-import { AppBar, Box, InputBase, Toolbar, Typography } from "@mui/material";
+import {
+  AppBar,
+  Box,
+  InputBase,
+  Menu,
+  MenuItem,
+  Toolbar,
+  Typography,
+} from "@mui/material";
 import styled from "styled-components";
 import TwitterIcon from "@mui/icons-material/Twitter";
-import { Instagram, LinkedIn } from "@mui/icons-material";
+import { Instagram, LinkedIn, Menu as MenuIcon } from "@mui/icons-material";
 
 const Navbar = () => {
   const StyledToolbar = styled(Toolbar)({
@@ -40,7 +48,8 @@ const Navbar = () => {
           <LinkedIn></LinkedIn>
           <Instagram></Instagram>
         </SocialBox>
-        <MenuBox>
+        {/* conditions for responsive web design */}
+        <MenuBox sx={{ display: { xs: "none", sm: "none", md: "flex" } }}>
           {MenuItems.map((item) => (
             <Typography sx={{ cursor: "pointer", fontSize: "14px" }}>
               {item.Name}
@@ -54,8 +63,32 @@ const Navbar = () => {
               color: "white",
             }}
           />
+          <MenuIcon
+            sx={{ display: { xs: "block", sm: "block", md: "none" } }}
+          />
         </SearchBox>
       </StyledToolbar>
+      <Menu
+        id="demo-positioned-menu"
+        aria-labelledby="demo-positioned-button"
+        open={true}
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "right",
+        }}
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "left",
+        }}
+      >
+        <Box sx={{ width: 350, height: "90vh" }}>
+          {MenuItems.map((item) => (
+            <MenuItem sx={{ cursor: "pointer", fontSize: "14px" }}>
+              {item.Name}
+            </MenuItem>
+          ))}
+        </Box>
+      </Menu>
     </AppBar>
   );
 };
