@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   AppBar,
   Box,
@@ -40,8 +40,11 @@ const Navbar = () => {
     { Name: "Book a Repair", Link: "#" },
   ];
 
+  // using the state to close the menu icon
+  const [open, setOpen] = useState(false);
+
   return (
-    <AppBar sx={{ background: "black" }}>
+    <AppBar sx={{ background: "black" }} position="static">
       <StyledToolbar>
         <SocialBox>
           <TwitterIcon></TwitterIcon>
@@ -65,20 +68,23 @@ const Navbar = () => {
           />
           <MenuIcon
             sx={{ display: { xs: "block", sm: "block", md: "none" } }}
+            // closing the hamburger bar
+            onClick={() => setOpen(!open)}
           />
         </SearchBox>
       </StyledToolbar>
       <Menu
         id="demo-positioned-menu"
         aria-labelledby="demo-positioned-button"
-        open={true}
+        open={open}
+        onClose={() => setOpen(!open)}
         anchorOrigin={{
           vertical: "top",
           horizontal: "right",
         }}
         transformOrigin={{
           vertical: "top",
-          horizontal: "left",
+          horizontal: "right",
         }}
       >
         <Box sx={{ width: 350, height: "90vh" }}>
