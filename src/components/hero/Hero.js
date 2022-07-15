@@ -20,9 +20,30 @@ const Hero = () => {
           backgroundPosition: "center",
           backgroundSize: "cover",
           height: 600,
-          width: "100",
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
         }}
-      ></Box>
+      >
+        <Box
+          sx={{
+            width: { xs: "100%", sm: "50", md: "40%" },
+            padding: { xs: 3, sm: 2, md: 20 },
+          }}
+        >
+          <Box sx={{ backgroundColor: "white", opacity: "0.8" }}>
+            <Typography variant={"h6"} color="tomoto" align="center" pt={8}>
+              Trending bikes
+            </Typography>
+            <Typography variant="h4" align="center">
+              Life is riding a bicycle
+            </Typography>
+            <Typography variant="body1" align="center" pb={8}>
+              We love bicycles
+            </Typography>
+          </Box>
+        </Box>
+      </Box>
     </Box>
   );
 };
